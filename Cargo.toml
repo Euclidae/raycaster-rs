@@ -11,7 +11,7 @@ authors = [
 keywords = ["graphics", "engine", "cross-platform", "input", "audio"]
 categories = ["rendering", "api-bindings", "game-engines", "multimedia"]
 readme = "README.md"
-edition = "2021"  # Changed to 2021 as 2024 is not stable yet
+edition = "2024"  
 
 [dependencies]
 sdl3 = { version = "0.14.33", features = ["image", "build-from-source"] } 
