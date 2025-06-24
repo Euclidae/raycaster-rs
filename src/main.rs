@@ -91,6 +91,8 @@ fn main() -> Result<(), String> {
         
         raycaster.render(&mut canvas, &mut texture_manager, &map, &player); 
         raycaster.render_sprites(&mut canvas, &mut texture_manager, &player, &sprites);
+        map.render(&mut canvas);
+        player.render(&mut canvas);
 
         if let Some(weapon_texture) = texture_manager.get_texture_mut("weapon") {
             canvas.copy(

@@ -1,4 +1,4 @@
-use crate::globals::TILE_SIZE;
+use crate::globals::{MINI_MAP_SCALE_FACTOR, TILE_SIZE};
 use sdl3::rect::Rect;
 use sdl3::render::Canvas;
 use sdl3::video::Window;
@@ -62,8 +62,8 @@ impl Map {
     pub fn render(&self, canvas: &mut Canvas<Window>) {
         for (i, row) in self.grid.iter().enumerate() {
             for (j, &tile) in row.iter().enumerate() {
-                let tile_x = j as i32 * TILE_SIZE;
-                let tile_y = i as i32 * TILE_SIZE;
+                let tile_x = ((j as f64) * TILE_SIZE as f64 * MINI_MAP_SCALE_FACTOR) as i32;
+                let tile_y = ((i as f64) * TILE_SIZE as f64 * MINI_MAP_SCALE_FACTOR) as i32;
                
                 let color = if tile == 0 {
                     (240, 240, 240) // Light gray for floor
@@ -83,9 +83,10 @@ impl Map {
                 canvas.fill_rect(Rect::new(
                     tile_x,
                     tile_y,
-                    (TILE_SIZE - 1) as u32,
-                    (TILE_SIZE - 1) as u32
+                    ((TILE_SIZE as f64 * MINI_MAP_SCALE_FACTOR - 1.0) as u32),
+                    ((TILE_SIZE as f64 * MINI_MAP_SCALE_FACTOR - 1.0) as u32)
                 )).unwrap();
+            
             }
         }
     }

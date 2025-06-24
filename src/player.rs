@@ -1,4 +1,4 @@
-use crate::globals::{WINDOW_WIDTH, WINDOW_HEIGHT};
+use crate::globals::{MINI_MAP_SCALE_FACTOR, WINDOW_HEIGHT, WINDOW_WIDTH};
 use sdl3::render::Canvas;
 use sdl3::video::Window;
 use std::f64::consts::PI;
@@ -46,14 +46,20 @@ impl Player {
 
     pub fn render(&self, canvas: &mut Canvas<Window>) {
         canvas.set_draw_color((255, 0, 0));
-        canvas.draw_point((self.x as i32, self.y as i32)).unwrap();
+        // Scale the player's position for the minimap
+        let mini_x = (self.x * MINI_MAP_SCALE_FACTOR).round() as i32;
+        let mini_y = (self.y * MINI_MAP_SCALE_FACTOR).round() as i32;
+        canvas.draw_point((mini_x, mini_y)).unwrap();
 
-        // Draw direction line
+        // Draw direction line, also scaled
+        let line_length = 50.0 * MINI_MAP_SCALE_FACTOR;
         let end_x = self.x + self.rotation_angle.cos() * 50.0;
         let end_y = self.y + self.rotation_angle.sin() * 50.0;
+        let mini_end_x = (end_x * MINI_MAP_SCALE_FACTOR).round() as i32;
+        let mini_end_y = (end_y * MINI_MAP_SCALE_FACTOR).round() as i32;
         canvas.draw_line(
-            (self.x as i32, self.y as i32),
-            (end_x as i32, end_y as i32)
+            (mini_x, mini_y),
+            (mini_end_x, mini_end_y)
         ).unwrap();
     }
 }
