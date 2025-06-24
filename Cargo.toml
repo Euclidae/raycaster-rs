@@ -1,0 +1,17 @@
+[package]
+name = "Raycaster"
+description = "raycasting engine like doom"
+repository = "!TODO"
+documentation = "https://docs.rs/sdl3/latest/sdl3/"
+version = "0.2.0"
+license = "MIT"
+authors = [
+    "Euclidae"
+]
+keywords = ["graphics", "engine", "cross-platform", "input", "audio"]
+categories = ["rendering", "api-bindings", "game-engines", "multimedia"]
+readme = "README.md"
+edition = "2021"  # Changed to 2021 as 2024 is not stable yet
+
+[dependencies]
+sdl3 = { version = "0.14.33", features = ["image", "build-from-source"] } 
