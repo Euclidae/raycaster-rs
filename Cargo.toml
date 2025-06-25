@@ -1,7 +1,7 @@
 [package]
-name = "Raycaster"
+name = "Raycaster-rs"
 description = "raycasting engine like doom"
-repository = "!TODO"
+repository = "https://github.com/Euclidae/raycaster-rs"
 documentation = "https://docs.rs/sdl3/latest/sdl3/"
 version = "0.2.0"
 license = "MIT"
