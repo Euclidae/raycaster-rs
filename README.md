@@ -9,7 +9,7 @@ This project is an extension of my [Web-Raycasting-Engine](https://github.com/Eu
 - Texture-mapped walls, sprites, and weapons
 - Basic enemy and player logic
 - Extendable map and resource system
-![alt text](image.png)
+![image](https://github.com/user-attachments/assets/b081b4c0-70ee-4a2d-9ec9-4ea4be915d7b)
 
 ## Resources & Credits
 
