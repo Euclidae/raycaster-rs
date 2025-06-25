@@ -83,7 +83,7 @@ fn main() -> Result<(), String> {
             sprite.update_animation(delta_time);
         }
         
-        player.update();
+        player.update(&map);
         raycaster.cast_all_rays(&player, &map);
         
         canvas.set_draw_color(Color::BLACK);

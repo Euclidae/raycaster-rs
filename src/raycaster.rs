@@ -82,12 +82,12 @@ impl Raycaster {
                     let wall_x = ray.wall_hit_x % TILE_SIZE as f64;
                     let tex_x = (wall_x / TILE_SIZE as f64 * 64.0) as i32;
                     
-                    let shade_factor = (1.0 - (ray.distance / MAX_DEPTH).min(1.0)) * 0.8 + 0.2;
+                    let shade_factor = (1.0 - (ray.distance / MAX_DEPTH).min(1.0)) * 0.8 + 0.2; //I don't even remember what this is for. todo reference pikuma
                     let shade_value = (255.0 * shade_factor) as u8;
                     
                     texture.set_color_mod(shade_value, shade_value, shade_value);
                     
-                    let src_rect = Rect::new(tex_x, 0, 1, 64);
+                    let src_rect = Rect::new(tex_x, 0, TEX_X_DIM,TEX_Y_DIM);
                     let dst_rect = Rect::new(i as i32, wall_top, 1, wall_height as u32);
                     
                     canvas.copy(texture, src_rect, dst_rect).unwrap();

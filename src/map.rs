@@ -83,8 +83,8 @@ impl Map {
                 canvas.fill_rect(Rect::new(
                     tile_x,
                     tile_y,
-                    ((TILE_SIZE as f64 * MINI_MAP_SCALE_FACTOR - 1.0) as u32),
-                    ((TILE_SIZE as f64 * MINI_MAP_SCALE_FACTOR - 1.0) as u32)
+                    (TILE_SIZE as f64 * MINI_MAP_SCALE_FACTOR - 1.0) as u32,
+                    (TILE_SIZE as f64 * MINI_MAP_SCALE_FACTOR - 1.0) as u32
                 )).unwrap();
             
             }

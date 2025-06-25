@@ -2,7 +2,7 @@ use crate::globals::{MINI_MAP_SCALE_FACTOR, WINDOW_HEIGHT, WINDOW_WIDTH};
 use sdl3::render::Canvas;
 use sdl3::video::Window;
 use std::f64::consts::PI;
-
+use crate::map::Map;
 pub struct Player {
     pub x: f64,
     pub y: f64,
@@ -28,7 +28,7 @@ impl Player {
         }
     }
 
-    pub fn update(&mut self) {
+    pub fn update(&mut self, map: &Map) {
         self.rotation_angle += self.turn_direction as f64 * self.rotation_speed;
 
         // Normalize angle to 0..2PI
@@ -40,6 +40,12 @@ impl Player {
         }
 
         let move_step = self.move_direction as f64 * self.move_speed;
+        if self.x + self.rotation_angle.cos() * move_step < 0.0 ||
+           self.x + self.rotation_angle.cos() * move_step > WINDOW_WIDTH as f64 ||
+           self.y + self.rotation_angle.sin() * move_step < 0.0 ||
+           self.y + self.rotation_angle.sin() * move_step > WINDOW_HEIGHT as f64 || map.has_wall_at( self.x + self.rotation_angle.cos() * move_step, self.y + self.rotation_angle.sin() * move_step) {
+            return; // Prevent moving out of bounds
+        }
         self.x += self.rotation_angle.cos() * move_step;
         self.y += self.rotation_angle.sin() * move_step;
     }

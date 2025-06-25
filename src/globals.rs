@@ -14,3 +14,5 @@ pub const MAX_DEPTH: f64 = 800.0;
 pub const FLOOR_COLOR: (u8, u8, u8) = (64, 64, 64);
 pub const SKY_COLOR: (u8, u8, u8) = (135, 206, 235); // Sky blue
 pub const MINI_MAP_SCALE_FACTOR: f64 = 0.3; // Scale factor for mini-map rendering
+pub const TEX_X_DIM: u32 =  1024;
+pub const TEX_Y_DIM: u32 = 1024;
