@@ -15,6 +15,7 @@ use std::time::{Duration, Instant};
 use crate::globals::{WINDOW_WIDTH, WINDOW_HEIGHT, TILE_SIZE};
 use crate::map::Map;
 use crate::player::Player;
+use crate::ray::Ray;
 use crate::raycaster::Raycaster;
 use crate::texture::TextureManager;
 use crate::sprite::Sprite;
@@ -45,7 +46,6 @@ fn main() -> Result<(), String> {
     let map = Map::new();
     let mut player = Player::new();
     let mut raycaster = Raycaster::new();
-    
     let mut last_frame_time = Instant::now();
     
     'running: loop {
@@ -90,9 +90,10 @@ fn main() -> Result<(), String> {
         canvas.clear();
         
         raycaster.render(&mut canvas, &mut texture_manager, &map, &player); 
-        raycaster.render_sprites(&mut canvas, &mut texture_manager, &player, &sprites);
         map.render(&mut canvas);
+        raycaster.render_sprites(&mut canvas, &mut texture_manager, &player, &sprites);
         player.render(&mut canvas);
+        raycaster.render_all_rays(&mut canvas,&player);
 
         if let Some(weapon_texture) = texture_manager.get_texture_mut("weapon") {
             canvas.copy(

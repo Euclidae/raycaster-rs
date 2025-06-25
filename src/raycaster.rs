@@ -31,6 +31,13 @@ impl Raycaster {
             ray.cast(player, map);
             self.rays.push(ray);
             ray_angle += ray_angle_step;
+            // ray.render(canvas, player); // Remove this line if not needed, or move rendering to after collecting rays
+        }
+    }
+
+    pub fn render_all_rays(&self, canvas: &mut Canvas<Window>,player: &Player) {
+        for ray in &self.rays {
+            ray.render(canvas, player);
         }
     }
 

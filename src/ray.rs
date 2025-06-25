@@ -1,4 +1,4 @@
-use crate::{globals::{TILE_SIZE, WINDOW_WIDTH, WINDOW_HEIGHT}, map::Map, player::Player};
+use crate::{globals::{MINI_MAP_SCALE_FACTOR, TILE_SIZE, WINDOW_HEIGHT, WINDOW_WIDTH}, map::Map, player::Player};
 use sdl3::render::Canvas;
 use sdl3::video::Window;
 use std::f64::consts::PI;
@@ -136,8 +136,8 @@ impl Ray {
     pub fn render(&self, canvas: &mut Canvas<Window>, player: &Player) {
         canvas.set_draw_color((255, 0, 0));
         canvas.draw_line(
-            (player.x as i32, player.y as i32),
-            (self.wall_hit_x as i32, self.wall_hit_y as i32)
+            ((player.x * MINI_MAP_SCALE_FACTOR) as i32, (player.y*MINI_MAP_SCALE_FACTOR) as i32),
+            ((self.wall_hit_x * MINI_MAP_SCALE_FACTOR) as i32, (self.wall_hit_y*MINI_MAP_SCALE_FACTOR) as i32)
         ).unwrap();
     }
 }
