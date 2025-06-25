@@ -24,7 +24,7 @@ fn main() -> Result<(), String> {
     let video = sdl.video().unwrap();
     
     let window = video
-        .window("Brick Breaker", WINDOW_WIDTH, WINDOW_HEIGHT)
+        .window("Raycaster-RS", WINDOW_WIDTH, WINDOW_HEIGHT)
         .position_centered()
         .build()
         .map_err(|e| e.to_string())?;
