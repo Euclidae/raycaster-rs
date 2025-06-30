@@ -63,16 +63,16 @@ fn main() -> Result<(), String> {
         player.turn_direction = 0;
         player.move_direction = 0;
         
-        if keyboard_state.is_scancode_pressed(Scancode::Right) {
+        if keyboard_state.is_scancode_pressed(Scancode::Right) || keyboard_state.is_scancode_pressed(Scancode::D) {
             player.turn_direction = 1;
         }
-        if keyboard_state.is_scancode_pressed(Scancode::Left) {
+        if keyboard_state.is_scancode_pressed(Scancode::Left) || keyboard_state.is_scancode_pressed(Scancode::A) {
             player.turn_direction = -1;
         }
-        if keyboard_state.is_scancode_pressed(Scancode::Up) {
+        if keyboard_state.is_scancode_pressed(Scancode::Up) || keyboard_state.is_scancode_pressed(Scancode::W) {
             player.move_direction = 1;
         }
-        if keyboard_state.is_scancode_pressed(Scancode::Down) {
+        if keyboard_state.is_scancode_pressed(Scancode::Down) || keyboard_state.is_scancode_pressed(Scancode::S) {
             player.move_direction = -1;
         }
         
